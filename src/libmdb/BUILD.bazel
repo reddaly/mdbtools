@@ -1,0 +1,38 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "libmdb",
+    srcs = [
+        "backend.c",
+        "catalog.c",
+        "data.c",
+        "dump.c",
+        #"fakeglib.c",
+        "file.c",
+        "iconv.c",
+        "index.c",
+        "like.c",
+        "map.c",
+        "money.c",
+        "options.c",
+        "props.c",
+        "rc4.c",
+        "sargs.c",
+        "stats.c",
+        "table.c",
+        "version.c",
+        "worktable.c",
+        "write.c",
+    ],
+    copts = [
+        "-Wno-implicit-int",
+        "-Wno-unused-variable",
+        "-Wno-incompatible-pointer-types",
+        "-Wno-vla",
+    ],
+    deps = [
+        "@glib_archive//:glib",
+        "@mdbtools//include:mdbprivate",
+        "@mdbtools//include:mdbtools_configured",
+    ],
+)

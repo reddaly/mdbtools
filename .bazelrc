@@ -1,0 +1,5 @@
+# For hermetic C/C++ builds: https://github.com/bazelbuild/rules_go/issues/3167
+common --repo_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
+# Until https://github.com/bazelbuild/bazel/issues/7260 is closed, this is
+# needed:
+build --incompatible_enable_cc_toolchain_resolution

@@ -88,6 +88,19 @@ If you want to build man pages, you'll need
 [GNU awk](https://www.gnu.org/software/gawk/).
 
 
+### Bazel alternative
+
+There is partial support for building mdbtools using
+[bazel](https://bazel.build/). This allows building on linux without installing
+any of the above dependencies. Example commands that build and run some of the
+mdbtools utilities:
+
+
+```shell
+bazel run //src/util:mdb-tables -- --help
+bazel run //src/util:mdb-json -- --help
+```
+
 ## Installation
 
 Latest version is available at https://github.com/mdbtools/mdbtools
@@ -138,14 +151,14 @@ enivornment variables. Or, you can disable GLib entirely with the
 `--disable-glib` flag, in which case MDB Tools will use an internal
 implementation of GLib's functions.
 
-configure can be passed any of the following flags to turn on other 
+configure can be passed any of the following flags to turn on other
 capabilities.  Note that the options `--with-unixodbc` and `--with-iodbc` are
 mutually exclusive.
 
 ```
---with-unixodbc  specifies the location of the unixODBC driver manager and 
+--with-unixodbc  specifies the location of the unixODBC driver manager and
                  causes the unixODBC driver to be built.
---with-iodbc     specifies the location of the iODBC driver manager and 
+--with-iodbc     specifies the location of the iODBC driver manager and
                  causes the iODBC driver to be built.
 ```
 
@@ -159,7 +172,7 @@ A list of general options is available in the [INSTALL](./INSTALL) file, and
 $ make
 ```
 
-Once MDB Tools has been compiled, libmdb.[so|a] will be in the src/libmdb 
+Once MDB Tools has been compiled, libmdb.[so|a] will be in the src/libmdb
 directory and the utility programs will be in the src/util directory.
 
 You can then install (to /usr/local by default) by running the following as root:
@@ -171,13 +184,13 @@ $ make install
 Some systems will also need the ld cache to be updated after installation;
 You can do that running:
 
-```bash 
+```bash
 $ ldconfig
 ```
 
 ## Hacking
 
-If you are interested in helping, read the [HACKING](./HACKING) file for a description of 
+If you are interested in helping, read the [HACKING](./HACKING) file for a description of
 where the code stands and what has been gleened of the file format.
 
 ## Contact

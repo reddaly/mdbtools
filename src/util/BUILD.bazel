@@ -1,0 +1,60 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_binary(
+    name = "mdb-json",
+    srcs = [
+        "base64.h",
+        "mdb-json.c",
+    ],
+    copts = [
+        "-Wno-implicit-int",
+        "-Wno-unused-variable",
+        "-Wno-incompatible-pointer-types",
+    ],
+    deps = [
+        "@glib_archive//:glib",
+        "@mdbtools//include:mdbtools_configured",
+        "@mdbtools//src/libmdb",
+    ],
+)
+
+cc_binary(
+    name = "mdb-tables",
+    srcs = [
+        "base64.h",
+        "mdb-tables.c",
+    ],
+    copts = [
+        "-Wno-implicit-int",
+        "-Wno-unused-variable",
+        "-Wno-incompatible-pointer-types",
+    ],
+    deps = [
+        "@glib_archive//:glib",
+        "@mdbtools//include:mdbtools_configured",
+        "@mdbtools//src/libmdb",
+    ],
+)
+
+# TODO(reddaly): Add other targets for the following files:
+# "mdb-array.c",
+# "mdb-count.c",
+# "mdb-export.c",
+# "mdb-header.c",
+# "mdb-import.c",
+# "mdb-parsecsv.c",
+# "mdb-prop.c",
+# "mdb-queries.c",
+# "mdb-schema.c",
+# "mdb-sql.c",
+# "mdb-ver.c",
+# "prcat.c",
+# "prdata.c",
+# "prdump.c",
+# "prfreemap.c",
+# "prindex.c",
+# "prkkd.c",
+# "prole.c",
+# "prtable.c",
+# "sargtest.c",
+# "updrow.c",

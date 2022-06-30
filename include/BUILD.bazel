@@ -1,0 +1,26 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "mdbtools_configured",
+    hdrs = [
+        "mdbsql.h",
+        "mdbtools.h",
+        "mdbver.h",
+    ],
+    deps = [
+        "@glib_archive//:glib",
+    ],
+    strip_include_prefix = "/include/",
+)
+
+cc_library(
+    name = "mdbprivate",
+    hdrs = [
+        "mdbprivate.h",
+    ],
+    deps = [
+        ":mdbtools_configured",
+        "@glib_archive//:glib",
+    ],
+    strip_include_prefix = "/include/",
+)

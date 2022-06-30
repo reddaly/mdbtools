@@ -1,0 +1,6 @@
+# Description:
+#   Bazel BUILD rules for external repositories that do not use Bazel.
+#
+#   Copied from https://github.com/deepmind/lab/blob/master/bazel/BUILD
+
+exports_files(glob(["*.BUILD"]))
