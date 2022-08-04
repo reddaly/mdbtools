@@ -1,0 +1,10 @@
+name: "Bazel: Build and test"
+on: [push]
+jobs:
+  Build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: "Bazel build"
+        run: bazel build //...
