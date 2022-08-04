@@ -1,26 +1,43 @@
-genrule(
-    name = "gen_configure",
-    srcs = [
-        "configure",
-        "config.guess",
-        "config.sub",
-        "install-sh",
-        "ltmain.sh",
-        "missing",
-        "glib/glib.h",
-        "po/LINGUAS",
-    ] + glob(["**/*.in"]),
-    outs = [
-        "config.h",
-        "glibconfig.h",
-    ],
-    cmd = "AR=$(AR) C_COMPILER=$(C_COMPILER) CC=$(CC) NM=$(NM) OBJCOPY=$(OBJCOPY) STRIP=$(STRIP) ./$(location configure) --silent --disable-fam --disable-libmount --disable-dtrace --disable-compile-warnings --with-pcre=internal " +
-          "&& cp --verbose -- config.h $(location config.h)" +
-          "&& cp --verbose -- glib/glibconfig.h $(location glibconfig.h)",
-    toolchains = [
-      "@bazel_tools//tools/cpp:current_cc_toolchain",
-    ],
-)
+# load("@rules_foreign_cc//foreign_cc:configure.bzl", "configure_make")
+
+# configure_make(
+#   name = "foreign_glib",
+#   autoconf = True,
+#   configure_in_place = True,
+#   configure_options = [
+#     "--silent",
+#     "--disable-fam",
+#     "--disable-libmount",
+#     "--disable-dtrace",
+#     "--disable-compile-warnings",
+#     "--with-pcre=internal",
+#   ],
+#   lib_source = "",
+# )
+
+# genrule(
+#     name = "gen_configure",
+#     srcs = [
+#         "configure",
+#         "config.guess",
+#         "config.sub",
+#         "install-sh",
+#         "ltmain.sh",
+#         "missing",
+#         "glib/glib.h",
+#         "po/LINGUAS",
+#     ] + glob(["**/*.in"]),
+#     outs = [
+#         "config.h",
+#         "glibconfig.h",
+#     ],
+#     cmd = "AR=$(AR) C_COMPILER=$(C_COMPILER) CC=$(CC) NM=$(NM) OBJCOPY=$(OBJCOPY) STRIP=$(STRIP) ./$(location configure) --silent --disable-fam --disable-libmount --disable-dtrace --disable-compile-warnings --with-pcre=internal " +
+#           "&& cp --verbose -- config.h $(location config.h)" +
+#           "&& cp --verbose -- glib/glibconfig.h $(location glibconfig.h)",
+#     toolchains = [
+#       "@bazel_tools//tools/cpp:current_cc_toolchain",
+#     ],
+# )
 
 cc_library(
     name = "charset",
