@@ -95,10 +95,27 @@ llvm_register_toolchains()
 http_archive(
     name = "glib_archive",
     build_file = "@mdbtools//bazel:glib.BUILD",
-    sha256 = "0cbb3d31c9d181bbcc97cba3d9dbe3250f75e2da25e5f7c8bf5a993fe54baf6a",
-    strip_prefix = "glib-2.55.1",
+    sha256 = "520376d5a95039820f687b44aef7a8adb9e82777b5f914892dfacc05ecc32b48",
+    strip_prefix = "glib-bazel-0.0.2",
     urls = [
-        "https://mirror.bazel.build/ftp.gnome.org/pub/gnome/sources/glib/2.55/glib-2.55.1.tar.xz",
-        "https://ftp.gnome.org/pub/gnome/sources/glib/2.55/glib-2.55.1.tar.xz",
+      "https://github.com/reddaly/glib-bazel/archive/refs/tags/v0.0.2.tar.gz",
+        #"https://mirror.bazel.build/ftp.gnome.org/pub/gnome/sources/glib/2.55/glib-2.55.1.tar.xz",
+        #"https://ftp.gnome.org/pub/gnome/sources/glib/2.55/glib-2.55.1.tar.xz",
     ],
 )
+
+# See https://bazelbuild.github.io/rules_foreign_cc/0.9.0/index.html
+
+http_archive(
+    name = "rules_foreign_cc",
+    # TODO: Get the latest sha256 value from a bazel debug message or the latest
+    #       release on the releases page: https://github.com/bazelbuild/rules_foreign_cc/releases
+    #
+    # sha256 = "...",
+    strip_prefix = "rules_foreign_cc-0.9.0",
+    url = "https://github.com/bazelbuild/rules_foreign_cc/archive/0.9.0.tar.gz",
+)
+
+load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
+
+rules_foreign_cc_dependencies()
